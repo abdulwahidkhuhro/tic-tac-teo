@@ -179,6 +179,7 @@ public class TicTacTeo implements ActionListener{
 		_7.setLabel("");
 		_8.setLabel("");
 		_9.setLabel("");
+		playerTurn = true;
 	}
 	
 	private void hasWon(String label){
