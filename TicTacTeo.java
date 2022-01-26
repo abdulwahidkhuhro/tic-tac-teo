@@ -131,7 +131,6 @@ public class TicTacTeo implements ActionListener{
 		}else if(reStart == e.getSource()){
 			reStart();
 		}
-		tunePlayer();
 	}
 	
 	public void setSymbol(Button clicked){
@@ -146,7 +145,7 @@ public class TicTacTeo implements ActionListener{
 				playerOWinningCount++;
 				playerO.setText("O : "+playerOWinningCount);
 				playerX.setText("X : "+playerXWinningCount);
-				tunePlayer();
+				//tunePlayer();
 				endGame("O");
 			}else{
 				playerTurnStatus.setText("Player X's Turn");
@@ -161,7 +160,7 @@ public class TicTacTeo implements ActionListener{
 				playerXWinningCount++;
 				playerO.setText("O : "+playerOWinningCount);
 			playerX.setText("X : "+playerXWinningCount);
-			tunePlayer();
+			//tunePlayer();
 				endGame("X");
 			}else{
 				playerTurnStatus.setText("Player O's Turn");
@@ -171,7 +170,7 @@ public class TicTacTeo implements ActionListener{
 	
 	public void tunePlayer(){
 		try{
-			URL url = new URL("music.wav");
+			URL url = new URL("file:music.wav");
 			AudioClip clip = Applet.newAudioClip(url);
 			clip.play();
 		}catch(Exception e){
