@@ -140,11 +140,13 @@ public class TicTacTeo implements ActionListener{
 			clicked.setLabel("O");
 			playerTurn = false;
 			clicked.setEnabled(false);
+			clicked.setBackground(Color.orange);
 			if(hasWon("O")){
 				playerTurnStatus.setText("Player O Won");
 				playerOWinningCount++;
 				playerO.setText("O : "+playerOWinningCount);
 				playerX.setText("X : "+playerXWinningCount);
+				tunePlayer();
 				endGame("O");
 			}else{
 				playerTurnStatus.setText("Player X's Turn");
@@ -153,11 +155,13 @@ public class TicTacTeo implements ActionListener{
 			clicked.setLabel("X");
 			playerTurn = true;
 			clicked.setEnabled(false);
+			clicked.setBackground(Color.blue);
 			if(hasWon("X")){
 				playerTurnStatus.setText("Player X Won");
 				playerXWinningCount++;
 				playerO.setText("O : "+playerOWinningCount);
 			playerX.setText("X : "+playerXWinningCount);
+			tunePlayer();
 				endGame("X");
 			}else{
 				playerTurnStatus.setText("Player O's Turn");
@@ -165,13 +169,9 @@ public class TicTacTeo implements ActionListener{
 		}
 	}
 	
-	private void exit(){
-		
-	}
-	
 	public void tunePlayer(){
 		try{
-			URL url = new URL("file:/music.wav");
+			URL url = new URL("music.wav");
 			AudioClip clip = Applet.newAudioClip(url);
 			clip.play();
 		}catch(Exception e){
@@ -196,26 +196,38 @@ public class TicTacTeo implements ActionListener{
 	private boolean hasWon(String label){
 		boolean result = false;
 		if(isOkay(_1, _2, _3, label)){
+			winColor(_1,_2,_3);
 			result = true;
 		}else if(isOkay(_4, _5, _6, label)){
+			winColor(_4,_5,_6);
 			result = true;
 		}else if(isOkay(_7, _8, _9, label)){
+			winColor(_7,_8,_9);
 			result = true;
 		}else if(isOkay(_1, _4, _7, label)){
+			winColor(_1,_4,_7);
 			result = true;
 		}else if(isOkay(_2, _5, _8, label)){
+			winColor(_2,_5,_8);
 			result = true;
 		}else if(isOkay(_3, _6, _9, label)){
+			winColor(_3,_6,_9);
 			result = true;
 		}else if(isOkay(_1, _5, _9, label)){
+			winColor(_1,_5,_9);
 			result = true;
 		}else if(isOkay(_3, _5, _7, label)){
+			winColor(_3,_5,_7);
 			result = true;
 		}
 		return result;
 	}
 	
-	
+	public void winColor(Button b1,Button b2,Button b3){
+		b1.setBackground(Color.red);
+		b2.setBackground(Color.red);
+		b3.setBackground(Color.red);
+	}
 	private void endGame(String label){
 		
 		JOptionPane.showMessageDialog(window,"Player "+label+" won the Game");
